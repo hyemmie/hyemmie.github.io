@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Hyemin Lee]]></title>
+        <description><![CDATA[Hyemin Lee]]></description>
+        <link>https://hyemmie.github.io</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Tue, 12 Dec 2023 15:11:49 GMT</lastBuildDate>
+        <atom:link href="https://hyemmie.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Markdown Examples]]></title>
+            <description><![CDATA[View examples of all possible Markdown options.]]></description>
+            <link>/posts/markdown</link>
+            <guid isPermaLink="true">/posts/markdown</guid>
+            <category><![CDATA[web development]]></category>
+            <dc:creator><![CDATA[You]]></dc:creator>
+            <pubDate>Thu, 18 Mar 2021 15:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Next.js Pages]]></title>
+            <description><![CDATA[Learn more about Next.js pages.]]></description>
+            <link>/posts/pages</link>
+            <guid isPermaLink="true">/posts/pages</guid>
+            <category><![CDATA[web development]]></category>
+            <dc:creator><![CDATA[You]]></dc:creator>
+            <pubDate>Wed, 17 Mar 2021 15:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[StarkWare의 Cairo 언어가 프로그램의 유효성을 증명하는 방법]]></title>
+            <description><![CDATA[This is description]]></description>
+            <link>/posts/Cairo</link>
+            <guid isPermaLink="true">/posts/Cairo</guid>
+            <category><![CDATA[Layer 2]]></category>
+            <category><![CDATA[ZKP]]></category>
+            <dc:creator><![CDATA[You]]></dc:creator>
+            <pubDate>Sun, 10 Dec 2023 15:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
