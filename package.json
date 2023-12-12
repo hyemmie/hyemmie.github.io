@@ -3,9 +3,7 @@
   "homepage": "http://hyemmie.github.io/",
   "scripts": {
     "dev": "next",
-    "build": "node ./scripts/gen-rss.js && next build && next export",
-    "predeploy": "npm run build",
-    "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles",
+    "build": "node ./scripts/gen-rss.js && next build",
     "start": "next start"
   },
   "dependencies": {
