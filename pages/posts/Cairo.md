@@ -1,6 +1,6 @@
 ---
 title: StarkWare의 Cairo 언어가 프로그램의 유효성을 증명하는 방법 (KR)
-date: 2023/02/28
+date: 2022/02/28
 description: 스타크웨어 생태계에서 한 축을 담당하고 있는 프로그래밍 언어 Cairo에 대해 살펴본다.
 tag: Layer 2, ZKP, Blockchain, StarkWare
 author: You

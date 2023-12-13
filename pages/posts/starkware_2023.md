@@ -1,6 +1,6 @@
 ---
 title: StarkWare Sessions 2023 wrap up (KR)
-date: 2022/02/16
+date: 2023/02/16
 description: 라디우스 팀에서 텔아비브에서 열린 스타크웨어 세션 내용 요약 및 리뷰를 공유합니다.
 tag: StarkWare, Ethereum, ZKP, Layer 2
 author: You
