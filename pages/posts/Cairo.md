@@ -28,6 +28,8 @@ author: You
 
 Cairo 프로그램의 검증 과정을 요약하자면 증명하고자 하는 프로그램을 Cairo로 작성한 후, 작성된 프로그램을 실행하면 execution trace를 얻을 수 있으며 prover는 이 trace를 통해 STARK proof를 만들 수 있다. 그리고 이 proof를 verifier가 검증하게 되는 구조이다.
 
+![Cairo Architecture](/images/posts/cairo1.png)
+
 본 글에서는 trace가 어떻게 생성되는지, 이를 통해 어떻게 proof를 만들게 되는지 알아볼 것이다.
 
 ## Cairo의 특징
@@ -148,6 +150,8 @@ body 반복문에 진입하기 전, 처음 두 라인이 실행되면 (m(ap -3),
 
 아래 그림은 피보나치 수열이 (1, 1, 2, 3) 까지 계산된 상태에서 2 + 3 = 5를 계산하는 과정(j = 7, (j-2, 2, 3) ⇒ (j-3, 3, 5))에 해당한다.
 
+![Cairo Assembly](/images/posts/cairo2.png)
+
 ## Cairo 프로그램의 증명 과정 : 2. Cairo Bytecode
 
 Cairo assembler가 프로그램을 Cairo 바이트코드로 변환하며, 이 단계는 앞서 언급한 4단계 중 2단계에 해당한다.
@@ -160,6 +164,8 @@ Cairo assembler가 프로그램을 Cairo 바이트코드로 변환하며, 이 �
 _"nondeterministic Cairo machine은 input이 ( T, m\*, pc_I, pc_F, ap_I, ap_F )일 때 `accept`` 한다."_
 
 Cairo 바이트코드는 아래 요소들로 구성되어 있다.
+![Cairo bytecode1](/images/posts/cairo3-1.png)
+![Cairo bytecode2](/images/posts/cairo3-2.png)
 
 - field element b의 sequence, 즉 b = (b0, … , b\_{|b|-1})
 - 두 개의 index인 prog_start, prog_end
@@ -170,9 +176,13 @@ partial memory function m* 은 m*(prog*base + i) = b_i, (i 는 [0, |b|])로 설�
 
 위 피보나치 프로그램에서 아래와 같은 바이트코드를 얻을 수 있다.
 
+![Cairo bytecode3](/images/posts/cairo4.png)
+
 prog_base를 0이라 가정하면, 이 바이트코드에 의해 partial memory function은 m*(0) = 0x480680017fff8000, m*(1) = 1, m*(2) = 0x480680017fff8000, … 와 같이 설정된다. pc값은 pc*I = 0 + 0, pc_F = 0 + 10로 설정된다.
 
 실제로 위 피보나치 코드를 컴파일했을 때 아래와 같은 바이트코드를 얻었다. data 가 b = ( b0 , ... , b\*{|b| - 1})에 해당한다.
+
+![Cairo compiled bytecode](/images/posts/cairo5.png)
 
 ## Cairo 프로그램의 증명 과정 : 3. Cairo Runner 실행
 
@@ -258,7 +268,10 @@ Cairo Runner가 프로그램을 실행하여 execution trace를 포함한 output
 
 먼저 스타크웨어가 제시한 deterministic Cairo machine과 nondeterministic Cairo machine의 개념을 살펴보자.
 
-(수식을 담기 위해 개념 내용은 별도로 정리한 notion 페이지의 내용을 사용)
+_(수식을 담기 위해 개념 내용은 별도로 정리한 notion 페이지의 내용을 사용하였다.)_
+
+![Cairo Machine1](/images/posts/cairo6.png)
+![Cairo Machine2](/images/posts/cairo7.png)
 
 proof로 만들고자 하는 statement를 다시 살펴보자.
 
@@ -278,6 +291,8 @@ proof로 만들고자 하는 statement를 다시 살펴보자.
 이 연산의 유효성을 증명해줄 proof가 만들어지면 이는 온체인의 SHARP 컨트랙트로 전달된다. 현재 SHARP 컨트랙트는 이더리움 goerli [테스트넷](https://goerli.etherscan.io/address/0xAB43bA48c9edF4C2C4bB01237348D1D7B28ef168#readContract) 에 배포되어 있다.
 
 SHARP 컨트랙트는 Fact Registry라는 컨트랙트에 fact라는 이름으로 증명(proof)을 작성하여 저장한다. 증명이 만들어졌으니 이를 검증해야 하고, 이 역할은 추후 설명할 Verifier Contract가 담당하게 된다.
+
+![Cairo SHARP](/images/posts/cairo8.png)
 
 이 fact가 온체인에 등록되었으므로 Verifier Contract는 유효성 검증을 위해 이를 사용할 수 있다. Verify Contract의 검증 로직은 이후 시리즈에서 다루기로 한다.
 
